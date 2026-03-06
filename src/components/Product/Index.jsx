@@ -48,6 +48,12 @@ const Product = () => {
   const totalDiscounts = mrp - offerPrice;
   const discountPercentage = ((totalDiscounts / mrp) * 100).toFixed(1);
 
+  useEffect(() => {
+    if (name) {
+      document.title = `${name} | Smile Cart`;
+    }
+  }, [name]);
+
   if (isError) return <PageNotFound />;
 
   if (isLoading) {
