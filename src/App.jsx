@@ -14,8 +14,8 @@ const App = () => {
     <Switch>
       <Route exact component={ProductList} path={index} />
       <Route exact component={Product} path={show} />
-      <Route exact component={Cart} path={cart} />
       <Redirect exact from="/" to="/products" />
+      <Route exact component={Cart} path={cart} />
       <Route component={PageNotFound} path="*" />
     </Switch>
   );
