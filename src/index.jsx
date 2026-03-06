@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/order
+import "./common/i18n";
+
 import React from "react";
 
 import initializeAxios from "apis/axios";
