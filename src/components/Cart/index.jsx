@@ -15,9 +15,9 @@ import PriceCard from "./PriceCard";
 const Cart = () => {
   const { cartItems } = useCartItemsStore.pick();
   const slugs = keys(cartItems);
+  const { data: products = [], isLoading } = useFetchCartProducts(slugs);
   const totalMrp = cartTotalOf(products, MRP);
   const totalOfferPrice = cartTotalOf(products, OFFER_PRICE);
-  const { data: products = [], isLoading } = useFetchCartProducts(slugs);
 
   // const fetchCartProducts = async () => {
   //   try {
