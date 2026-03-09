@@ -9,15 +9,15 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import routes from "routes";
 
 const App = () => {
-  const { show, index, cart, checkout } = routes.products;
+  const { show, index } = routes.products;
 
   return (
     <Switch>
+      <Route exact component={Checkout} path={routes.checkout} />
+      <Route exact component={Cart} path={routes.cart} />
       <Route exact component={ProductList} path={index} />
       <Route exact component={Product} path={show} />
       <Redirect exact from="/" to="/products" />
-      <Route exact component={Checkout} path={checkout} />
-      <Route exact component={Cart} path={cart} />
       <Route component={PageNotFound} path="*" />
     </Switch>
   );

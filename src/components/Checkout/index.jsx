@@ -1,5 +1,7 @@
 import React from "react";
 
+import { PageLoader } from "components/commons";
+import { useFetchCountries } from "hooks/reactQuery/useCheckoutApi";
 import i18n from "i18next";
 import { LeftArrow } from "neetoicons";
 import { Typography } from "neetoui";
@@ -15,10 +17,11 @@ const Checkout = () => {
   const { t } = useTranslation();
 
   const history = useHistory();
-
+  const { isLoading } = useFetchCountries();
   const handleRedirect = () => {
     history.goBack();
   };
+  if (isLoading) return <PageLoader />;
 
   return (
     <NeetoUIForm
