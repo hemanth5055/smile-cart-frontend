@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 import classNames from "classnames";
 import { useShowProduct } from "hooks/reactQuery/useProductsApi";
@@ -14,9 +14,9 @@ const Carousel = () => {
     useShowProduct(slug);
   const imageUrls = append(imageUrl, partialImageUrls);
   const timerRef = useRef(null);
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex(prevIndex => (prevIndex + 1) % imageUrls.length);
-  };
+  }, [imageUrls.length]);
 
   const handlePrevious = () => {
     setCurrentIndex(
@@ -34,7 +34,7 @@ const Carousel = () => {
     timerRef.current = setInterval(handleNext, 3000);
 
     return () => clearInterval(timerRef.current);
-  }, []);
+  }, [handleNext]);
 
   return (
     <div className="flex flex-col  items-center gap-2">
